@@ -1,0 +1,82 @@
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+    padding: 2rem;
+}
+
+.items{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.item{
+    border: 2px solid black;
+}
+
+.infoContainer{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+    width: 60%;
+}
+
+.infoText{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.infoAnimationSample{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.cardDeck{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.card{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.cardPlaceholder{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.readingField{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid black;
+}
