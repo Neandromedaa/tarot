@@ -6,7 +6,7 @@ import {
 	createBrowserRouter,
 	RouterProvider,
 } from 'react-router-dom';
-import './index.css'
+import './index.scss'
 import MainMenu from './routes/mainMenu/MainMenu';
 import NotFound from './routes/notFound/NotFound';
 import Reading from './routes/reading/Reading';

@@ -4,7 +4,7 @@ import styles from './reading.module.scss'
 function ReadingItem({ onClick, value }) {
     return (
         <>
-            <button onClick={onClick} className={styles.item}>{value}</button>
+            <button onClick={onClick} className={styles.button}>{value}</button>
         </>
     )
 }

@@ -2,24 +2,29 @@ import CardDeck from './CardDeck';
 import CardPlaceholder from './CardPlaceholder';
 import Card from './Card';
 import React, { useEffect, useState } from 'react'
+import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux';
-import { setMode } from '../../slices/readingSlice';
-import { setCardsArray } from '../../slices/readingSlice';
+import { setMode, setCardsArray, setIsCardsPlaced } from '../../slices/readingSlice';
 import styles from './reading.module.scss'
 
 function ReadingRead() {
     const dispatch = useDispatch();
     const currentMode = useSelector((state) => state.tarot.mode);
-    const [goToResult, setGoToResult] = useState(false);
+    const isCardsPlaced = useSelector((state) => state.tarot.isCardsPlaced);
     const currentSpreadType = useSelector((state) => state.tarot.tarotSpreadType);
     const cards = useSelector((state) => state.cards.items)
     const randomCards = useSelector((state) => state.tarot.cardsArray);
     const [placeholderIsAvailable, setPlaceholder] = useState(Array(currentSpreadType.cardsCount).fill(true));
 
-    console.log(randomCards)
     function getRandomCards(cards, cardsCount){
         let res = [];
         const tempCards = Array.from(cards);
+
+        for (let i = tempCards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tempCards[i], tempCards[j]] = [tempCards[j], tempCards[i]];
+        }
+
         for(let i = 0; i < cardsCount; i++){
             let rnd = Math.floor(Math.random() * (tempCards.length));
             res.push(tempCards[rnd]);
@@ -30,20 +35,24 @@ function ReadingRead() {
     
     useEffect(() => {
         getRandomCards(cards, currentSpreadType.cardsCount);
-    }, [])
-    
+    }, []);
+
+    useEffect(() => {
+        if (placeholderIsAvailable.every(item => item === false)) {
+          dispatch(setIsCardsPlaced(true));
+        }
+    }, [placeholderIsAvailable]);
+
     function activateNext() {
         setPlaceholder(prevStates => {
             const currentIndex = prevStates.findIndex(value => value === true);
             const newStates = [...prevStates];
             newStates[currentIndex] = false;
-            if (currentIndex === currentSpreadType.cardsCount - 1) setGoToResult(true);
             return newStates;
         });
     }
 
     const cardPlaceholders = randomCards.map((item, index) => {
-        console.log(item.name)
         return  <div key={index}>
                     {placeholderIsAvailable[index] ? <CardPlaceholder activateNext={activateNext}/> : <Card item={item.name}/>}
                 </div>
@@ -52,22 +61,23 @@ function ReadingRead() {
     function handleClick() {
         let newMode = currentMode + 1;
         dispatch(setMode(newMode));    
-    };
+    }
 
-    // useEffect(() => {
-    //     if(!placeholderIsEmpty1 && !placeholderIsEmpty3  && !placeholderIsEmpty3){
-    //         let newMode = currentMode + 1;
-    //         dispatch(setMode(newMode));    
-    //     };
-    // }, [placeholderIsEmpty1, placeholderIsEmpty2, placeholderIsEmpty3])
-    console.log(randomCards)
     return (
         <>
-            <div className={styles.readingField}>
+            <div className={styles.readingRead}>
                 <CardDeck/>
-                {cardPlaceholders}    
+                <div className={clsx(styles.readingPlaceholders, isCardsPlaced && styles.readingPlaceholders_center_animation)}>
+                    {cardPlaceholders} 
+                </div>  
+                <button 
+                    className={clsx( styles.button, styles.resButton_hide, isCardsPlaced && styles.resButton_show)} 
+                    onClick={() => handleClick()}
+                >
+                    Результаты
+                </button>
             </div>
-            {goToResult && <button onClick={() => handleClick()}>Результаты</button>}
+           
         </> 
     )
 }

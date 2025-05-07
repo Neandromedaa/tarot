@@ -16,7 +16,7 @@ function InfoText() {
             if(found) setDescription(found.description);
         };
         getSpreadTypes();
-    }, [currentSpreadType])
+    }, [currentSpreadType]);
 
     useEffect(() => {
         function getSpreadPurposes(){
@@ -24,7 +24,11 @@ function InfoText() {
             if(found) setDescription(found.description);
         };
         getSpreadPurposes();
-    }, [currentSpreadPurpose])
+    }, [currentSpreadPurpose]);
+
+    useEffect(() => {
+        setDescription('')
+    }, [currentMode])
 
     return (
         <>

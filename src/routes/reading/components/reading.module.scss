@@ -1,82 +1,144 @@
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@use '../../../styles/variables' as _variables;
+@use '../../../styles/colors' as _colors;
 
 .reading{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 2px solid black;
+    flex-flow: column;
+}
+.title{
     padding: 2rem;
+}
+
+.readingMain{
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    @include _variables.gapPadding(2rem, 2rem);
 }
 
 .items{
     display: flex;
     flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    @include _variables.gapPadding(2rem, 2rem);
     border: 2px solid black;
+    overflow-x: auto;
+    width: 25%;
 }
 
-.item{
+.button, .resButton{
     border: 2px solid black;
+    border-radius: 8px;
+    background: _colors.$reading-button-background;
+    color: _colors.$reading-button;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    min-height: 5.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: _colors.$reading-button-box-shadow;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: _colors.$reading-button-background-hover;
+        color: _colors.$reading-button-hover;
+        box-shadow: _colors.$reading-button-box-shadow-hover;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transition: all 0.1s ease;
+        transform: scale(0.98);
+        box-shadow: _colors.$reading-button-box-shadow-active;
+    }
+}
+
+.resButton_hide{
+    position: absolute;
+    top: 40rem;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.resButton_show{
+    transition-delay: 3.5s;
+    opacity: 1;
+    
 }
 
 .infoContainer{
     display: flex;
     flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    @include _variables.gapPadding(2rem, 2rem);
     border: 2px solid black;
-    width: 60%;
+    width: 70%;
 }
 
 .infoText{
     display: flex;
     flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    @include _variables.gapPadding(2rem, 2rem);
     border: 2px solid black;
+    min-height: 30%;
+    height: calc(70% + 2rem);
 }
 
 .infoAnimationSample{
     display: flex;
     flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    @include _variables.gapPadding(2rem, 2rem);
     border: 2px solid black;
+    height: 40%;
+}
+
+.readingRead{
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between
 }
 
 .cardDeck{
-    display: flex;
-    flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    width: 13.3rem;
+    height: 22rem;
     border: 2px solid black;
+    background-image: url('../../../../public/res.jpg');
+    background-size: cover;
+}
+
+.cardDeck_hide_animation{
+    opacity: 0;
+    transition: opacity 2s ease;
 }
 
 .card{
-    display: flex;
-    flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    width: 13.3rem;
+    height: 22rem;
     border: 2px solid black;
 }
 
 .cardPlaceholder{
-    display: flex;
-    flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
+    width: 13.3rem;
+    height: 22rem;
+    padding: 0;
     border: 2px solid black;
 }
 
-.readingField{
+.readingPlaceholders{
+    width: 50rem;
     display: flex;
-    flex-flow: column;
-    gap: 2rem;
-    padding: 2rem;
-    border: 2px solid black;
+    justify-content: space-between;
+    margin-top: 0;
+    transition: margin-bottom 2s ease;
+}   
+
+.readingPlaceholders_center_animation{
+    margin-bottom: 15rem;  
+    transition-delay: 1.5s;
 }

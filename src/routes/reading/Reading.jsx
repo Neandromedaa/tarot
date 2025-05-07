@@ -4,7 +4,6 @@ import ReadingResult from './components/ReadingResult'
 import InfoContainer from './components/InfoContainer'
 import styles from './components/reading.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { setMode } from '../slices/readingSlice';
 import { fetchSpreadTypes } from '../slices/fetchTarotSpreadTypesSlice'
 import { fetchSpreadPurposes } from '../slices/fetchTarotSpreadPurposesSlice'
 import { fetchCards } from '../slices/fetchTarotCardsSlice'
@@ -20,21 +19,18 @@ function Reading() {
         dispatch(fetchCards());
     }, []);
 
-    function handleClick() {
-        let newMode = currentMode + 1;
-        dispatch(setMode(newMode));    
-    };
-
     return (
         <>
-            <h1 className={styles.title}>Гадание</h1>
             <div className={styles.reading}>
-                {(currentMode === 0 || currentMode === 1) && <ReadingItems/>}
-                {currentMode === 2 && <ReadingRead/>}
-                {currentMode === 3 && <ReadingResult/>}
-                {(currentMode === 0 || currentMode === 1) && <InfoContainer/>}
-                {(currentMode === 0 || currentMode === 1) && <button onClick={() => handleClick()}>Выбрать</button>}
+                <h1 className={styles.title}>Гадание</h1>
+                <div className={styles.readingMain}>
+                    {(currentMode === 0 || currentMode === 1) && <ReadingItems/>}
+                    {currentMode === 2 && <ReadingRead/>}
+                    {currentMode === 3 && <ReadingResult/>}
+                    {(currentMode === 0 || currentMode === 1) && <InfoContainer/>}
+                </div>
             </div>
+            
         </>
     )
 }

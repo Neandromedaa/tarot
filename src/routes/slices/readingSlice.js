@@ -5,6 +5,7 @@ const initialState = {
   tarotSpreadPurpose: null,
   cardsArray: [],
   mode: 0,
+  isCardsPlaced: false,
 };
 
 const readingSlice = createSlice({
@@ -23,10 +24,13 @@ const readingSlice = createSlice({
     setMode: (state, action) => {
       if(state.mode === 3) state.mode = 0;
       else state.mode = action.payload;
-    }
+    },
+    setIsCardsPlaced: (state, action) => {
+      state.isCardsPlaced = action.payload;
+    },
   },
 });
 
-export const { setTarotSpreadType, setTarotSpreadPurpose, setCardsArray, setMode } = readingSlice.actions;
+export const { setTarotSpreadType, setTarotSpreadPurpose, setCardsArray, setMode, setIsCardsPlaced } = readingSlice.actions;
 
 export default readingSlice.reducer;

@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import clsx from 'clsx';
+import { useSelector } from 'react-redux';
 import styles from './reading.module.scss'
 
 function CardDeck() {
+    const isCardsPlaced = useSelector((state) => state.tarot.isCardsPlaced);
     return (
         <>
-            <div 
+            <div
                 draggable={true} 
                 onDragStart={(e) => {
                     e.dataTransfer.setData("text/plain", "card");
                 }} 
-                className={styles.cardDeck}   
+                className={clsx(styles.cardDeck, isCardsPlaced && styles.cardDeck_hide_animation)}   
             >
                 CardDeck
             </div>

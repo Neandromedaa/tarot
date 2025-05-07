@@ -1,0 +1,4 @@
+@mixin gapPadding($gap, $padding){
+    gap: $gap;
+    padding: $padding;
+}
