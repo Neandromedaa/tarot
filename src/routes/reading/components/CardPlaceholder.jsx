@@ -20,7 +20,6 @@ function CardPlaceholder({ activateNext }) {
             onDragOver={handleDragOver}
             className={styles.cardPlaceholder}
         >
-            CardPlaceholder
         </div>
     )
 }

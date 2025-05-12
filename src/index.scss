@@ -1,7 +1,31 @@
 * {
     padding: 0;
     margin: 0;
-    // box-sizing: border-box;
     font-family: 'UnifrakturCook', 'Blackletter', serif;
 }
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Фон скроллбара */
+*::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border: 1px solid #3a2f2f;
+}
+
+/* Бегунок */
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(145deg, #4b2e2e, #2e0e0e);
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+/* При наведении */
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(145deg, #5c3a3a, #3a1a1a);
+}
+
+
 

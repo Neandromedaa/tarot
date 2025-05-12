@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMode, setCardsArray, setIsCardsPlaced } from '../../slices/readingSlice';
 import styles from './reading.module.scss'
 
+
 function ReadingRead() {
     const dispatch = useDispatch();
     const currentMode = useSelector((state) => state.tarot.mode);
@@ -15,6 +16,10 @@ function ReadingRead() {
     const cards = useSelector((state) => state.cards.items)
     const randomCards = useSelector((state) => state.tarot.cardsArray);
     const [placeholderIsAvailable, setPlaceholder] = useState(Array(currentSpreadType.cardsCount).fill(true));
+
+    //////////////////////
+    const TEMP_DEV = ['Y510oJAkvHADnjzqxlTb', 'Hf0dGCzac82GdF5oH0JD', 'vGzBxjl0l2egoE0jYzp1']
+    //////////////////////
 
     function getRandomCards(cards, cardsCount){
         let res = [];
@@ -54,7 +59,7 @@ function ReadingRead() {
 
     const cardPlaceholders = randomCards.map((item, index) => {
         return  <div key={index}>
-                    {placeholderIsAvailable[index] ? <CardPlaceholder activateNext={activateNext}/> : <Card item={item.name}/>}
+                    {placeholderIsAvailable[index] ? <CardPlaceholder activateNext={activateNext}/> : <Card item={item} FOR_DEV={TEMP_DEV[index]}/>}
                 </div>
     })
 
@@ -66,10 +71,10 @@ function ReadingRead() {
     return (
         <>
             <div className={styles.readingRead}>
-                <CardDeck/>
+                <CardDeck isDraggable={isCardsPlaced}/>
                 <div className={clsx(styles.readingPlaceholders, isCardsPlaced && styles.readingPlaceholders_center_animation)}>
                     {cardPlaceholders} 
-                </div>  
+                </div>
                 <button 
                     className={clsx( styles.button, styles.resButton_hide, isCardsPlaced && styles.resButton_show)} 
                     onClick={() => handleClick()}

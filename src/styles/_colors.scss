@@ -1,7 +1,14 @@
-$reading-button: #eee;
-$reading-button-hover: #ffd6ea;
-$reading-button-background: linear-gradient(145deg, #1a1a1a, #333333);
-$reading-button-background-hover: linear-gradient(145deg, #444444, #1a1a1a);
-$reading-button-box-shadow: 0 0 5px #270a10, inset 0 0 5px #361424;
-$reading-button-box-shadow-hover:  0 0 5px #000, inset 0 0 5px #444;
-$reading-button-box-shadow-active: inset 0 0 10px rgb(48, 18, 35);
+$button-background: linear-gradient(145deg, #2a2a2a, #634d4d);
+$button: #d4cccc;
+$button-background-hover: linear-gradient(145deg, #3a2f2f, #634d4d);
+$button-hover: #f2eaea;
+$button-box-shadow: 0 0 4px rgba(100, 0, 0, 0.3);
+$button-box-shadow-hover: 0 0 6px #000, inset 0 0 6px #3a2f2f;
+$button-box-shadow-active: inset 0 0 10px rgba(100, 0, 0, 0.5);
+$disabledButton-background: #2e2e2e;
+$disabledButton: #888;
+
+$box-shadow: 0 0 6px rgba(100, 0, 0, 0.4);
+
+$black: black;
+$burgundy: #4a2f2f;
